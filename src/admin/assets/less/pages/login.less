@@ -1,0 +1,63 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  height: 100vh;
+  background: url(../../images/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+
+  .login-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    //width: 368px;
+    padding-bottom: 30px;
+    .logo {
+      width: 120px;
+      height: 120px;
+    }
+    h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+  }
+
+  .ant-form {
+    width: 368px;
+    .ant-form-item {
+      margin-bottom: 0;
+      .ant-input-affix-wrapper {
+        height: 40px;
+      }
+    }
+
+    .login-form-item {
+      display: flex;
+      //align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      margin-bottom: 16px;
+
+      .handleSendCode {
+        height: 40px;
+      }
+      .ant-form-explain {
+        color: #fc4d4e;
+      }
+    }
+    .login-wrap {
+      .login {
+        height: 40px;
+        background-color: rgba(24, 144, 255, 1);
+        line-height: 24px;
+        font-size: 16px;
+      }
+      .ant-btn-primary.disabled, .ant-btn-primary[disabled], .ant-btn-primary.disabled:hover, .ant-btn-primary[disabled]:hover, .ant-btn-primary.disabled:focus, .ant-btn-primary[disabled]:focus, .ant-btn-primary.disabled:active, .ant-btn-primary[disabled]:active, .ant-btn-primary.disabled.active, .ant-btn-primary[disabled].active {
+        color: rgba(255, 255, 255, .5);
+      }
+    }
+  }
+}

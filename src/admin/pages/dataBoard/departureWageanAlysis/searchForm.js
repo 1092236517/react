@@ -1,0 +1,162 @@
+import React, { Component } from 'react';
+import { observer } from "mobx-react";
+import { Form, Row, Col, Input, DatePicker, Button, Select, message, Tag } from 'antd';
+import { getFormOptLayout, formItemLayout, formLayout, createFormField } from 'ADMIN_UTILS/searchFormUtil';
+import { selectInputSearch } from 'ADMIN_UTILS';
+import moment from 'moment';
+
+const FormItem = Form.Item;
+const { Option } = Select;
+
+@observer
+class SearchForm extends Component {
+    startQuery = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, fieldsValue) => {
+            if (err) {
+                return;
+            }
+
+            const { IntvDtStart, IntvDtEnd, EntryDtStart, EntryDtEnd, EntId, TrgtSpId } = fieldsValue;
+            if (!IntvDtStart && !IntvDtEnd && !EntryDtStart && !EntryDtEnd && !EntId && !TrgtSpId) {
+                message.error('至少选择一个过滤条件');
+                return false;
+            }
+            const { startQuery, resetPageCurrent } = this.props;
+            resetPageCurrent();
+            startQuery();
+            window._czc.push(['_trackEvent', '自离工资分析报表', '查询', '自离工资分析报表_N非结算']);
+        });
+    }
+
+    render() {
+        const { getFieldDecorator, getFieldValue } = this.props.form;
+        const formOptLayout = getFormOptLayout(1);
+        const { companyList, laborList, resetForm, exportRecord } = this.props;
+
+        return (
+            <Form onSubmit={this.startQuery}>
+                <Row gutter={15} type="flex" justify="start">
+                    <Col {...formLayout}>
+                        <Row>
+                            <Col span={16}>
+                                <FormItem labelCol={{ span: 12 }} wrapperCol={{ span: 12 }} label="面试日期">
+                                    {getFieldDecorator('IntvDtStart', {
+
+                                    })(
+                                        <DatePicker
+                                            disabledDate={(currentDate) =>
+                                                getFieldValue('IntvDtEnd') ? moment(currentDate).isAfter(moment(getFieldValue('IntvDtEnd')), 'days') : false
+                                            }
+                                        />
+                                    )}
+                                </FormItem>
+                            </Col>
+                            <Col span={8}>
+                                <FormItem labelCol={{ span: 1 }} wrapperCol={{ span: 23 }} label="-">
+                                    {getFieldDecorator('IntvDtEnd', {
+
+                                    })(
+                                        <DatePicker
+                                            disabledDate={(currentDate) =>
+                                                getFieldValue('IntvDtStart') ? moment(currentDate).isBefore(moment(getFieldValue('IntvDtStart')), 'days') : false
+                                            }
+                                        />
+                                    )}
+                                </FormItem>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col {...formLayout}>
+                        <Row>
+                            <Col span={16}>
+                                <FormItem labelCol={{ span: 12 }} wrapperCol={{ span: 12 }} label="入职日期">
+                                    {getFieldDecorator('EntryDtStart', {
+
+                                    })(
+                                        <DatePicker
+                                            disabledDate={(currentDate) =>
+                                                getFieldValue('EntryDtEnd') ? moment(currentDate).isAfter(moment(getFieldValue('EntryDtEnd')), 'days') : false
+                                            }
+                                        />
+                                    )}
+                                </FormItem>
+                            </Col>
+                            <Col span={8}>
+                                <FormItem labelCol={{ span: 1 }} wrapperCol={{ span: 23 }} label="-">
+                                    {getFieldDecorator('EntryDtEnd', {
+
+                                    })(
+                                        <DatePicker
+                                            disabledDate={(currentDate) =>
+                                                getFieldValue('EntryDtStart') ? moment(currentDate).isBefore(moment(getFieldValue('EntryDtStart')), 'days') : false
+                                            }
+                                        />
+                                    )}
+                                </FormItem>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col {...formLayout}>
+                        <FormItem {...formItemLayout} label='企业'>
+                            {getFieldDecorator('EntId', {
+
+                            })(
+                                <Select
+                                    allowClear={true}
+                                    placeholder='请选择'
+                                    filterOption={selectInputSearch}
+                                    optionFilterProp="children"
+                                    showSearch>
+                                    {
+                                        companyList.map((value) => {
+                                            return <Option key={value.EntId} value={value.EntId}>{value.EntShortName}</Option>;
+                                        })
+                                    }
+                                </Select>
+                            )}
+                        </FormItem>
+                    </Col>
+                    <Col {...formLayout}>
+                        <FormItem {...formItemLayout} label='劳务'>
+                            {getFieldDecorator('TrgtSpId', {
+
+                            })(
+                                <Select
+                                    allowClear={true}
+                                    placeholder='请选择'
+                                    filterOption={selectInputSearch}
+                                    optionFilterProp="children"
+                                    showSearch>
+                                    {
+                                        laborList.map((value) => {
+                                            return <Option key={value.SpId} value={value.SpId}>{value.SpShortName}</Option>;
+                                        })
+                                    }
+                                </Select>
+                            )}
+                        </FormItem>
+                    </Col>
+                    <Col {...{
+                        sm: { span: 24, offset: 0 },
+                        md: { span: 24, offset: 0 },
+                        lg: { span: 24, offset: 0 }
+                    }} className="text-right">
+                        <FormItem>
+                            <Button className='ml-8' type="primary" htmlType="submit" className="ml-8">确定</Button>
+                            <Button className='ml-8' onClick={resetForm}>重置</Button>
+                            {/* <Button className='ml-8' type='primary' onClick={exportRecord}>导出</Button> */}
+                        </FormItem>
+                    </Col>
+                </Row>
+            </Form>
+        );
+    }
+}
+
+SearchForm = Form.create({
+    mapPropsToFields: props => (createFormField(props.searchValue)),
+    onValuesChange: (props, changedValues, allValues) => props.handleFormValuesChange(allValues)
+})(SearchForm);
+
+export default SearchForm;

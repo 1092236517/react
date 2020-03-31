@@ -1,0 +1,188 @@
+.order-add{
+  height: 640px;
+  overflow-y: auto;
+  .row-second{
+    border-bottom: 1px solid #DBDBDB;
+    margin-bottom: 14px;
+  }
+  .ant-form-item{
+   margin-bottom: 12px;
+  }
+  .text-center{
+    .ant-form-item-label{
+      text-align: left;
+    }
+  }
+  .agency-title{
+    line-height: 40px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 16px;
+    margin-left: 4%;
+  }
+  .agency-content{
+    display: inline-block;
+    .ant-form-item {
+      display: inline-block;
+    }
+  }
+  .no-money{
+    margin-left: 14%;
+    margin-top: 14px;
+  }
+  .end-date{
+    line-height: 39px;
+    text-align: right;
+  }
+  .line-second{
+    border-bottom: 1px solid #DBDBDB;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+  }
+  .input-none {
+    border: none;
+    background: #fff;
+    color: rgba(0, 0, 0, 0.65);
+    width: 121px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ant-input-disabled {
+    cursor: text;
+  }
+  .xing{
+    color: #f5222d;
+    margin-right: 2px;
+    font-size: 14px;
+    font-family: SimSun;
+  }
+  .delete{
+    border-color: #108EE9;
+    color: #108EE9;
+  }
+  .plat-form{
+    .ant-form-item-control-wrapper{
+      margin-left: 14px;
+    }
+  }
+  .week-price{
+    position: relative;
+    .circle{
+      position: absolute;
+      top: 10px;
+      background: #108EE9;
+      width: 20px;
+      text-align: center;
+      border-radius: 50%;
+      color: #fff;
+    }
+    .c-formitem{
+      margin-bottom: 0px;
+      .ant-form-item-required{
+        bottom: 8px;
+      }
+      .c-notice{
+        position: relative;
+        .notice-day {
+          color: #108EE9;
+          font-size: 12px;
+        }
+        .notice-month{
+          color: #108EE9;
+          font-size: 12px;
+        }
+        .ant-form-item{
+          height: 58px;
+        }
+      }
+    }
+  }
+}
+
+.order {
+  .details {
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // -webkit-box-orient: vertical;
+    // display: -webkit-box;
+    // -webkit-line-clamp: 3;
+    max-height: 66px;
+    position: relative;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -moz-box;
+    -moz-line-clamp: 3!important;
+    overflow: hidden;
+  }
+  .details:after {
+    -webkit-transition: background 0.3s;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #FFFFFF 50%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: 0;
+    content: "...";
+    padding: 0 5px 1px 30px;
+    position: absolute;
+    right: 0;
+  }
+  .ant-table-row:nth-child(2n) {
+    .details:after {
+      -webkit-transition: background 0.3s;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), #dbdbdb 50%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+      bottom: 0;
+      content: "...";
+      padding: 0 5px 1px 30px;
+      position: absolute;
+      right: 0;
+    }
+  }
+  .ant-table-tbody > tr:hover > td {
+    .details:after {
+      -webkit-transition: background 0.3s;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), #e6f7ff 50%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+      bottom: 0;
+      content: "...";
+      padding: 0 5px 1px 30px;
+      position: absolute;
+      right: 0;
+    }
+  }
+  .ant-table-tbody > tr.ant-table-row-selected td {
+    .details:after {
+      -webkit-transition: background 0.3s;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), #fafafa 50%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+      bottom: 0;
+      content: "...";
+      padding: 0 5px 1px 30px;
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+.line {
+  display: block;
+  line-height: 2px;
+}
+.more {
+  color: #1890ff;
+  position: absolute;
+  right: 0px;
+  top: -20px;
+  cursor: pointer;
+}
+.trStyle {
+  width: 100%;
+  border: 1px solid #ccc;
+  line-height: 30px;
+}
+
+.tdTitle {
+  width: 24%;
+  text-align: center;
+}
+
+.tdContent {
+  width: 76%;
+  border-left: 1px solid #ccc;
+  // text-align: center;
+}

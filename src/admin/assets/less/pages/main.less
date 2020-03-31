@@ -1,0 +1,110 @@
+@import "~antd/lib/style/themes/default.less";
+.main-layout-container {
+  height: 100vh;
+  .ant-layout-header {
+    padding: 0;
+    background: #fff;
+  }
+  .main-layout-complement-container {
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .main-layout-complement {
+      overflow: auto;
+      width: 700px;
+      height: 600px;
+      padding: 20px 50px;
+    }
+  }
+  .main-layout-content-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    > :first-child {
+      flex: none;
+    }
+    .ant-spin-spinning {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-layout-content {
+      overflow: auto;
+
+      .main-layout-content-page {
+        background: white;
+        padding: 16px;
+        > .not-found {
+          margin: -24px;
+          background: @layout-body-background;
+        }
+        .ant-table-small table > .ant-table-thead > tr > th {
+          background: #fafafa;
+        }
+      }
+    }
+    .ant-tabs-bar {
+      margin-bottom: 0;
+    }
+  }
+}
+#app, .ant-modal {
+  .ant-table-tbody > tr > td, .ant-table-thead > tr > th {
+    padding: 4px 6px;
+    font-size: 14px;
+    //-moz-word-break: break-all;
+  }
+  //.ant-table-thead > tr.ant-table-row-hover > td, 鼠标悬浮
+  //.ant-table-tbody > tr.ant-table-row-hover > td,
+  //.ant-table-thead > tr:hover > td,
+  //.ant-table-tbody > tr:hover > td {
+  //  background: red;
+  //}
+  .ant-table-thead > tr > th {
+    background-color: #bdbdbd;
+    //-moz-word-break: break-all;
+  }
+  .ant-table-tbody > tr > td {
+    word-break: break-all;
+    border-color: #999;
+  }
+  .ant-table-bordered .ant-table-tbody > tr > td, .ant-table-bordered .ant-table-thead > tr > th {
+    border-color: #999;
+  }
+  .ant-table-bordered .ant-table-thead > tr > th {
+    border-color: #999;
+  }
+  .ant-table-bordered .ant-table-body > table, .ant-table-bordered .ant-table-fixed-left table, .ant-table-bordered .ant-table-fixed-right table, .ant-table-bordered .ant-table-header > table {
+    border-color: #999;
+  }
+  .ant-input {
+    border-color: #999;
+  }
+  .ant-select-selection {
+    border-color: #999;
+  }
+  .ant-table-small {
+    border-color: #999;
+  }
+  .ant-table-row:nth-child(2n) {
+    background-color: #dbdbdb;
+  }
+  body {
+    font-family: Tahoma, Geneva, sans-serif;
+    color: rgba(0, 0, 0, 1);
+  }
+  .ant-table {
+    color: rgba(0, 0, 0, 1);
+  }
+  .ant-table-middle .ant-table-tbody > tr > td, .ant-table-middle .ant-table-thead > tr > th {
+    padding: 4px 6px;
+    font-size: 14px;
+  }
+}
+.RedRowColor{
+  color: red;
+}
