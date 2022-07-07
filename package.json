@@ -61,7 +61,7 @@
     "mobx": "^4.3.1",
     "mobx-react": "^5.2.3",
     "mobx-utils": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.4.1",
     "react-data-export": "^0.5.0",
     "react-dom": "^16.4.1",
